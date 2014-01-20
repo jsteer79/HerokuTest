@@ -1,12 +1,15 @@
-var express = require("express");
-var logfmt  = require("logfmt");
-var app     = express();
+var   Express  = require( 'Express' )
+    , logfmt   = require( "logfmt" )
+    , NodeRest = require( './src/NodeRest.js' )
+    , app      = Express();
 
-app.use( logfmt.requestLogger() );
+app.use( logfmt.requestLogger() )
+   .use( Express.json() )
+   .use( Express.urlencoded() )
+   .use( Express.static( __dirname + '/public' ) );
 
-app.get('/', function(req, res) {
-    res.send('Hello World!');
-});
+NodeRest( app, 'foo' );
+NodeRest( app, 'bar' );
 
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
