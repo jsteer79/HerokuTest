@@ -1,4 +1,4 @@
-var   Express  = require( 'Express' )
+var   Express  = require( 'express' )
     , logfmt   = require( "logfmt" )
     , NodeRest = require( './src/NodeRest.js' )
     , app      = Express();
